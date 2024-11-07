@@ -96,3 +96,49 @@ La API deberá incluir las siguientes operaciones:
    git commit -m "Implementación de funcionalidades y documentación"
    git push origin main
    ```
+
+## EndPoints
+#### Filtrar trailers por género
+GET http://localhost:3000/trailers/genero?genero=Drama
+Accept: application/json
+  Con este endpoint podemos traer los trailers que contenga el genero drama buscado en la lista de generos
+###
+
+# Buscar trailers por actor
+GET http://localhost:3000/trailers/actor?actor=Casey Cott
+Accept: application/json
+  Con este endpoint podemos traer los trailers que contenga los actores en la lista de repartos
+###
+
+# Obtener series con más de X temporadas
+GET http://localhost:3000/trailers/temp?minTemporadas=3
+Accept: application/json
+
+  Con este endpoint podemos mostrar los trailers que tinen 'x' cantidad de temporadas en adelante
+###
+
+# Crear un nuevo trailer
+POST http://localhost:3000/trailers
+Content-Type: application/json
+
+{
+    "titulo": "Nuevo Trailer",
+    "categoria": "Serie",
+    "genero": ["Acción", "Aventura"],
+    "reparto": ["Actor1" ],
+    "resumen": "Este es un trailer de ejemplo",
+    "trailer": "https://www.example.com/trailer"
+}
+  Con este endpoint podemos añadir un nuevo trailer a la base de datos
+###
+
+# Eliminar un trailer
+DELETE http://localhost:3000/trailers/672d02d510174c1c61eac565
+Accept: application/json
+###
+  Con este endpoint podemos elimanar un trailer con el id dado por la base de datos (object id)
+# Manejo de error - Trailer no encontrado
+GET http://localhost:3000/trailers/672d02d510174c1c61eac565
+Accept: application/json
+
+este endpoint sirver para las pruebas de cuando no se encuntra un triler 
